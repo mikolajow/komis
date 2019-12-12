@@ -1,3 +1,170 @@
 <div class="row">
-<h1>forma</h1>
+  <div class="col-md-12">
+    <form (ngSubmit)="onSubmit()" [formGroup]="carForm" #f>
+      <div class="row">
+        <div class="col-md-12">
+          <input
+            type="file"
+            id="formImage"
+            formControlName="image"
+            style="background: white; border: white"
+            (change)="onFileSelected($event)">
+          <p *ngIf="editMode" style="margin-top: 8px">Zdjęcie nie jest wymagane</p>
+          <p *ngIf="!editMode" style="margin-top: 8px; color: red">Zdjęcie jest wymagane</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="selectBrand">Wybierz Markę</label>
+            <select
+              class="form-control"
+              id="selectBrand"
+              formControlName="brand">
+              <option *ngFor="let brand of brandList">{{ brand.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="selectFuel">Wybierz Rodzaj Paliwa</label>
+            <select
+              class="form-control"
+              id="selectFuel"
+              formControlName="fuel">
+              <option *ngFor="let fuel of fuelTypeList">{{ fuel.fuelType }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="model">Model:</label>
+            <input
+              type="text"
+              id="model"
+              class="form-control"
+              formControlName="model">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="productionYear">Rok Produkcji:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productionYear"
+              formControlName="productionYear">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="mileage">Przebieg:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="mileage"
+              formControlName="mileage">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="enginePower">Moc Silnika</label>
+            <input
+              type="number"
+              id="enginePower"
+              class="form-control"
+              formControlName="enginePower">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="color">Kolor</label>
+            <input
+              type="text"
+              id="color"
+              class="form-control"
+              formControlName="color">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="vin">Vin</label>
+            <input
+              type="text"
+              id="vin"
+              class="form-control"
+              formControlName="vin">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="netPrice">Cena Netto</label>
+            <input
+              type="number"
+              id="netPrice"
+              class="form-control"
+              formControlName="netPrice">
+          </div>
+        </div>
+      </div>
+
+      <div class="row col-md-12">
+        <div class="form-group">
+          <label for="description">Opis</label>
+          <textarea
+            style="width: 560px;"
+            type="text"
+            id="description"
+            class="form-control"
+            rows="4"
+            formControlName="description"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row col-md-12">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!carForm.valid">Zapisz
+        </button>
+        <button
+          *ngIf="!editMode"
+          type="button"
+          class="btn btn-danger"
+          (click)="carForm.reset()"
+          routerLink="/cars">Anuluj
+        </button>
+        <button
+          *ngIf="editMode"
+          type="button"
+          class="btn btn-danger"
+          (click)="initFormAndPopulateWithData()">Resetuj Zmiany
+        </button>
+        <button
+          *ngIf="editMode"
+          type="button"
+          class="btn btn-warning"
+          (click)="onBackButtonClicked()">Powrót
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
+<hr>

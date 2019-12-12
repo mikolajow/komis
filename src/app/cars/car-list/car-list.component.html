@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-12">
-    <button class="btn btn-success" routerLink="new">Dodaj Nowy</button>
-    <button class="btn btn-danger">Usuń</button>
+    <button class="btn btn-warning" (click)="onManageBrandsClicked()">{{ brandOptionsButtonText }}</button>
+    <button class="btn btn-success" routerLink="new">Dodaj Samochód</button>
+    <app-brand-control *ngIf="manageBrands"></app-brand-control>
   </div>
 </div>
 <hr>

@@ -1,10 +1,22 @@
-<div class="col-md-5">
-  <app-photo
-  [car]="car"></app-photo>
-</div>
-<div class="col-md-1"></div>
-<div class="col-md-6">
-  <app-car-description
-  [car]="car"
-  ></app-car-description>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-success" (click)="onCarListClicked()">Lista Samochodów</button>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <app-photo
+        [car]="car"></app-photo>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <app-car-description
+        [car]="car"
+        [countryList]="countryList"
+        [carId]="carId"
+      ></app-car-description>
+    </div>
+  </div>
 </div>

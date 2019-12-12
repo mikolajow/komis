@@ -5,7 +5,7 @@
     <h3>Marka: </h3>
   </div>
   <div class="col-md-7">
-    <h3>{{ car.brand }}</h3>
+    <h3>{{ this.car.brand.name }}</h3>
   </div>
 </div>
 <hr>
@@ -30,5 +30,6 @@
 <div class="row">
   <div align="center">
     <button class="btn btn-primary" (click)="onDetailsClicked()">Szczegóły</button>
+    <button class="btn btn-danger" (click)="onDeleteCarClicked()">Usuń</button>
   </div>
 </div>

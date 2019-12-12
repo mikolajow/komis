@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Car} from '../../../shared/car.model';
+import {Car} from '../../../shared/car/car.model';
+import {BrandService} from '../../../shared/brand/brand.service';
 
 @Component({
   selector: 'app-car',
@@ -11,7 +12,7 @@ export class CarComponent implements OnInit {
   @Input() car: Car;
   @Input() index: number;
 
-  constructor() { }
+  constructor(private brandService: BrandService) { }
 
   ngOnInit() {
   }

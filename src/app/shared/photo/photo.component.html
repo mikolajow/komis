@@ -1,6 +1,7 @@
-<img
-  [src]="car.photo"
-  alt="{{ car.color }}"
-  class="img-responsive">
-<!--  style="max-height: 200px;"-->
-<!--&gt;-->
+<img *ngIf="car; else no_picture"
+     src="{{ car.photo }}"
+     alt="{{ car.color }}"
+     class="img-responsive">
+<ng-template #no_picture>
+  <p>Dodaj zdjęcie aby je wyświetlić</p>
+</ng-template>

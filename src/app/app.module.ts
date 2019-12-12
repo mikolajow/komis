@@ -6,7 +6,7 @@ import {CarListComponent} from './cars/car-list/car-list.component';
 import {CarComponent} from './cars/car-list/car/car.component';
 import {CarInfoComponent} from './cars/car-info/car-info.component';
 import {PhotoComponent} from './shared/photo/photo.component';
-import {CarService} from './shared/car.service';
+import {CarService} from './shared/car/car.service';
 import {RouterModule, Routes} from '@angular/router';
 import {CarStartComponent} from './cars/car-list/car-start/car-start.component';
 import { CarsComponent } from './cars/cars.component';
@@ -14,8 +14,14 @@ import { CarDetailsComponent } from './car-details/car-details.component';
 import { CarDetailsEditComponent } from './car-details-edit/car-details-edit.component';
 import { CarDescriptionComponent } from './car-details/car-description/car-description.component';
 import {DropdownDirective} from './shared/dropdown.directive';
-import { PhotoEditComponent } from './car-details-edit/photo-edit/photo-edit.component';
 import { CarDescriptionEditComponent } from './car-details-edit/car-description-edit/car-description-edit.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrandService} from './shared/brand/brand.service';
+import {FuelTypeService} from './shared/fuel-type/fuel-type.service';
+import {HttpClientModule} from '@angular/common/http';
+import { BrandControlComponent } from './car-details-edit/car-description-edit/brand-control/brand-control.component';
+import {CountryService} from './shared/country/country.service';
+import {TaxesService} from './shared/taxes/taxes.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/cars', pathMatch: 'full'},
@@ -45,14 +51,17 @@ const routes: Routes = [
     CarDetailsEditComponent,
     CarDescriptionComponent,
     DropdownDirective,
-    PhotoEditComponent,
     CarDescriptionEditComponent,
+    BrandControlComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [CarService],
+  providers: [CarService, BrandService, FuelTypeService, CountryService, TaxesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

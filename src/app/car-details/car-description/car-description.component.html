@@ -2,7 +2,7 @@
   <tbody>
   <tr>
     <td width="100px">Marka</td>
-    <td>{{ car.brand }}</td>
+    <td>{{ car.brand.name }}</td>
   </tr>
   <tr>
     <td>Model</td>
@@ -29,7 +29,11 @@
     <td>{{ car.color }}</td>
   </tr>
   <tr>
-    <td>Cena Netto</td>
+    <td>Vin</td>
+    <td>{{ car.vin }}</td>
+  </tr>
+  <tr>
+    <td>Cena netto</td>
     <td>{{ car.netPrice }}</td>
   </tr>
   <tr>
@@ -37,8 +41,8 @@
     <td>{{ car.description }}</td>
   </tr>
   <tr class="info" *ngIf="selectedCountry">
-    <td>Cena Brutto dla {{ selectedCountry }}</td>
-    <td> ------------ TODO -------------</td>
+    <td>Cena Brutto dla {{ selectedCountry.name }}</td>
+    <td>{{ bruttoForSelectedCountry }}</td>
   </tr>
   </tbody>
 </table>
@@ -53,8 +57,13 @@
         Podatek Dla Kraju <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li *ngFor="let country of countryList, let index = index"><a (click)="onCountrySelected(index)"
-                                                   style="cursor: pointer">{{ country }}</a></li>
+        <li
+          *ngFor="let country of countryList, let index = index">
+          <a
+            (click)="onCountrySelected(index)"
+            style="cursor: pointer">{{ country.name }}
+          </a>
+        </li>
       </ul>
     </div>
     <button class="btn btn-warning" (click)="onEditCarData()">Edytuj Dane Samochodu</button>
